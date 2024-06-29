@@ -1,17 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-import Image from "next/image";
-import logo from "../shared/images/logo.png";
-import Link from "next/link";
-import { SearchIcon } from "@/shared/icons/SearchIcon";
-import { NotificationsIcon } from "@/shared/icons/NotificationsIcon";
-import { MailIcon } from "@/shared/icons/MailIcon";
-import profilePhoto from "../shared/images/profilePhoto.jpeg";
-import { HomeIcon } from "@/shared/icons/HomeIcon";
-import { DishIcon } from "@/shared/icons/Dishicon";
-import { FridgeIcon } from "@/shared/icons/FridgeIcon";
+import { HeaderComponent } from "@/shared/components/Header.component";
+import { SidebarComponent } from "@/shared/components/Sidebar.component";
+import { FollowsComponent } from "@/shared/components/Follows.component";
 
 export const metadata: Metadata = {
   title: "Frige",
@@ -27,87 +19,15 @@ export default function RootLayout({
     <html data-theme="light" lang="en">
       <Toaster position="top-center" />
       <body>
-        <header className="bg-white h-[8vh] flex items-center justify-between">
-          <div className=" border-r border-b border-gray-200 h-full w-1/6 flex items-center justify-center">
-            <Link href={"/"}>
-              <Image width={200} height={60} src={logo} alt={"Logo Frige"} />
-            </Link>
-          </div>
-          <div className="border-b border-gray-200 h-full w-5/6 flex">
-            <div className="flex items-center justify-start w-full h-full gap-3 pl-5">
-              <SearchIcon color="#999999" />
-              <input
-                className=" text-gray-400 font-semibold outline-none w-full h-full"
-                placeholder="Search"
-                type="text"
-              />
-            </div>
-            <div className="flex items-center justify-end gap-8 px-7">
-              <MailIcon color="#999999" />
-              <div className="indicator">
-                <span className="indicator-item badge bg-blue-400"></span>
-                <NotificationsIcon color="#999999" />
-              </div>
-              <span className=" whitespace-nowrap">
-                Sergio Dominguez Varela
-              </span>
-              <div className="avatar">
-                <div className="w-12 border-2 border-gray-400 rounded-full">
-                  <Image src={profilePhoto} alt={"Profile photo"} />
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </header>
+        <HeaderComponent />
         <main className="h-[92vh] flex">
-          <aside className="border-r border-gray-200 h-full w-1/6 flex justify-start pl-14 pt-10">
-            <nav className=" flex flex-col gap-14">
-              <ul className="flex flex-col gap-3">
-                <span className=" text-2xl text-gray-400">Menu</span>
-                <li className="flex items-center justify-start gap-2">
-                  <HomeIcon width={20} height={20} color="#999999" />
-                  <Link className=" text-xl" href="/">
-                    Home
-                  </Link>
-                </li>
-                <li className="flex items-center justify-start gap-2">
-                  <DishIcon width={20} height={20} color="#999999" />
-                  <Link className=" text-xl" href="/recipes">
-                    Recipes
-                  </Link>
-                </li>
-                <li className="flex items-center justify-start gap-2">
-                  <FridgeIcon width={20} height={20} color="#999999" />
-                  <Link className=" text-xl" href="/fridge">
-                    Fridge
-                  </Link>
-                </li>
-              </ul>
-              <ul className="flex flex-col gap-3">
-                <span className=" text-2xl text-gray-400">Tipos de platos</span>
-                <li className="flex items-center justify-start gap-2">
-                  <HomeIcon width={20} height={20} color="#999999" />
-                  <Link className=" text-xl" href="/">
-                    Fish
-                  </Link>
-                </li>
-                <li className="flex items-center justify-start gap-2">
-                  <DishIcon width={20} height={20} color="#999999" />
-                  <Link className=" text-xl" href="/recipes">
-                    Meat
-                  </Link>
-                </li>
-                <li className="flex items-center justify-start gap-2">
-                  <FridgeIcon width={20} height={20} color="#999999" />
-                  <Link className=" text-xl" href="/fridge">
-                    Vegetables
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </aside>
-          <section className="flex w-5/6">{children}</section>
+          <SidebarComponent />
+          <section className="flex w-5/6 h-fit p-8 gap-5 bg-gray-100">
+            <div className="border border-gray-200 w-5/6 rounded-sm bg-white flex justify-center h-fit min-h-full">
+              {children}
+            </div>
+            <FollowsComponent />
+          </section>
         </main>
       </body>
     </html>

@@ -3,16 +3,18 @@
 
 import { useEffect, useState } from "react";
 import { getWeekMenu, createWeekMenu } from "./services/weekMenuService";
-import { CardComponent } from "./components/Card.component";
-import { FoodTypeSquare } from "./components/FoodTypeSquare.component";
 import toast from "react-hot-toast";
+import Image from "next/image";
+import burrito from "./assets/burrito.jpg";
+import { HeartIcon } from "@/shared/icons/HeartIcon";
+import { FridgeIcon } from "@/shared/icons/FridgeIcon";
+import { CardComponent } from "./components/Card.component";
 
 const Home = () => {
   const [weekMenu, setWeekMenu] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  toast.success('Successfully toasted!')
-
+  toast.success("Successfully toasted!");
 
   useEffect(() => {
     const fetchWeekMenu = async () => {
@@ -79,36 +81,32 @@ const Home = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return <span className="loading loading-spinner loading-lg"></span>;
 
   return (
-    <div className="m-auto flex items-center justify-center flex-col gap-5 overflow-hidden">
-      <h1>Top recipes</h1>
-      <div className="border flex flex-col">
-      <div className="grid grid-cols-8 gap-5 mb-7">
-        <FoodTypeSquare />
-        <FoodTypeSquare />
-        <FoodTypeSquare />
-        <FoodTypeSquare />
-        <FoodTypeSquare />
-        <FoodTypeSquare />
-        <FoodTypeSquare />
-        <FoodTypeSquare />
-      </div>
-      <div className="grid grid-cols-3 h-full gap-5">
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-      </div>
-      </div>
-      {/*   <pre>{JSON.stringify(weekMenu, null, 2)}</pre>
-      <button
-        className="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900"
-        onClick={handleCreateWeekMenu}
-      >
-        Create Week Menu
-      </button> */}
+    <div className=" grid grid-cols-1 md:grid-cols-2 w-full p-7 gap-10">
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+      <CardComponent/>
+
     </div>
   );
 };
