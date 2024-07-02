@@ -6,7 +6,7 @@ import profilePhoto from "../images/profilePhoto.jpeg";
 
 export const FollowsComponent = () => {
   return (
-    <div className="h-fit border border-gray-200 bg-white w-1/6 rounded-sm flex flex-col justify-between fixed">
+    <div className="h-fit border border-gray-200 bg-white w-1/6 rounded-sm flex flex-col justify-between">
       <div className="flex flex-col items-center p-5">
         <div className="flex w-full items-center justify-between">
           <span className=" text-2xl text-gray-400">Follows</span>
